@@ -17,125 +17,109 @@ body {
   background: #080d18;
   color: #fff;
   font-family: Arial, sans-serif;
-  min-height: 100vh;
 }
 
 header {
-  padding: 22px 7%;
-  border-bottom: 1px solid #202a3c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 22px;
+  background: #101a2c;
+  text-align: center;
+  border-bottom: 1px solid #263852;
 }
 
 .logo {
-  font-size: 24px;
+  color: #55aaff;
+  font-size: 27px;
   font-weight: bold;
-  color: #56a8ff;
 }
 
 .hero {
   text-align: center;
-  padding: 55px 15px 30px;
+  padding: 42px 15px 25px;
 }
 
 .hero h1 {
-  font-size: clamp(30px, 6vw, 48px);
-  margin-bottom: 15px;
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 
 .hero h1 span {
-  color: #58aaff;
+  color: #55aaff;
 }
 
 .hero p {
-  color: #a8b5ca;
-  line-height: 1.7;
+  color: #aab7ca;
+  line-height: 1.6;
 }
 
 .container {
-  width: 90%;
+  width: 92%;
   max-width: 850px;
   margin: auto;
 }
 
-.upload-box {
-  border: 2px dashed #397fc4;
+.panel {
   background: #111c30;
-  border-radius: 18px;
-  padding: 38px 15px;
+  border: 1px solid #263852;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.panel h3 {
+  margin-bottom: 16px;
+}
+
+.upload {
+  display: block;
   text-align: center;
+  padding: 35px 15px;
+  background: #15243a;
+  border: 2px dashed #398ee0;
+  border-radius: 12px;
   cursor: pointer;
-  margin: 20px 0;
 }
 
-.upload-box:hover {
-  background: #172943;
-}
-
-.upload-box .upload-icon {
+.upload-icon {
   font-size: 42px;
   margin-bottom: 12px;
 }
 
-.upload-box p {
-  color: #a8b5ca;
-  margin-top: 10px;
+.upload p {
+  color: #aab7ca;
+  font-size: 13px;
+  margin: 10px;
 }
 
-button, select {
-  border: none;
-  border-radius: 9px;
-  padding: 13px 20px;
-  font-size: 15px;
-}
-
-button {
-  cursor: pointer;
-  font-weight: bold;
+.browse {
+  display: inline-block;
   background: #2588ef;
-  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
-button:hover {
-  background: #126cc7;
-}
-
-button:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-}
-
-.section {
-  background: #111c30;
-  border: 1px solid #24334b;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px 0;
-}
-
-.section h3 {
-  margin-bottom: 16px;
+#fileInput {
+  display: none;
 }
 
 .categories {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 10px;
 }
 
 .category {
-  background: #1b2a40;
-  border: 1px solid #344761;
+  background: #1b2b42;
+  color: white;
+  border: 1px solid #344862;
   border-radius: 10px;
   padding: 15px 5px;
-  text-align: center;
   cursor: pointer;
 }
 
 .category.active {
-  border: 2px solid #48a4ff;
-  background: #19385b;
+  border: 2px solid #55aaff;
+  background: #193c61;
 }
 
 .category span {
@@ -162,8 +146,8 @@ button:disabled {
 }
 
 .preview-card h4 {
-  margin-bottom: 10px;
-  color: #9fcaff;
+  color: #65b3ff;
+  margin-bottom: 12px;
 }
 
 .preview-card img,
@@ -173,34 +157,32 @@ button:disabled {
   height: 220px;
   object-fit: contain;
   background: #050912;
-  border-radius: 7px;
-}
-
-.controls {
-  margin-top: 18px;
+  border-radius: 8px;
 }
 
 .control {
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .control label {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 14px;
 }
 
-input[type="range"] {
+input[type=range] {
   width: 100%;
-  accent-color: #3197ff;
+  accent-color: #45a1ff;
 }
 
 select {
   width: 100%;
-  background: #1b2a40;
+  padding: 13px;
+  background: #1b2b42;
   color: white;
-  border: 1px solid #344761;
+  border: 1px solid #344862;
+  border-radius: 8px;
 }
 
 .actions {
@@ -209,30 +191,43 @@ select {
   margin-top: 20px;
 }
 
+button {
+  border: none;
+  padding: 14px;
+  border-radius: 9px;
+  background: #2588ef;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
 .actions button {
   flex: 1;
 }
 
 .download {
-  background: #16a36b;
+  background: #13a36a;
 }
 
-.download:hover {
-  background: #118453;
+#status {
+  color: #73baff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 16px;
 }
 
 footer {
   text-align: center;
-  padding: 35px 10px;
-  color: #8291a8;
+  padding: 30px 10px;
+  color: #8492a8;
   font-size: 13px;
-}
-
-#status {
-  text-align: center;
-  color: #69b5ff;
-  margin: 15px 0;
-  font-size: 14px;
 }
 
 @media(max-width:550px) {
@@ -245,20 +240,12 @@ footer {
     height: 250px;
   }
 
-  .categories {
-    gap: 6px;
-  }
-
-  .category {
-    padding: 12px 3px;
-  }
-
-  .category p {
-    font-size: 11px;
-  }
-
   .actions {
     flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 29px;
   }
 }
 </style>
@@ -268,64 +255,56 @@ footer {
 
 <header>
   <div class="logo">✦ PixelPro AI</div>
-  <span>Image Studio</span>
+  <p>Professional Image Studio</p>
 </header>
 
 <section class="hero">
-  <h1>Bring Your Photos <span>To Life.</span></h1>
-  <p>
-    Enhance image clarity, improve details and create
-    beautiful high-quality photos.
-  </p>
+  <h1>Make Photos <span>Beautiful.</span></h1>
+  <p>Improve clarity, colors and details with PixelPro AI.</p>
 </section>
 
 <main class="container">
 
-  <label class="upload-box" for="fileInput">
-    <div class="upload-icon">☁️</div>
-    <h3>Upload Your Photo</h3>
-    <p>Choose JPG, PNG or WEBP image</p>
-    <br>
-    <span style="color:#58aaff;font-weight:bold">
-      Browse Image
-    </span>
-  </label>
+  <section class="panel">
+    <label class="upload" for="fileInput">
+      <div class="upload-icon">☁️</div>
+      <h3>Upload Your Photo</h3>
+      <p>JPG, PNG and WEBP supported (Max 20 MB)</p>
+      <span class="browse">Browse Images</span>
+    </label>
 
-  <input
-    type="file"
-    id="fileInput"
-    accept="image/jpeg,image/png,image/webp"
-    hidden
-  >
+    <input type="file" id="fileInput"
+      accept="image/jpeg,image/png,image/webp">
+  </section>
 
-  <section class="section">
+  <section class="panel">
     <h3>Choose Image Category</h3>
 
     <div class="categories">
-      <div class="category active" data-category="Nature">
+      <button class="category active" data-category="Nature">
         <span>🌳</span>
         <p>Nature</p>
-      </div>
+      </button>
 
-      <div class="category" data-category="Portrait">
+      <button class="category" data-category="Portrait">
         <span>👤</span>
         <p>Portrait</p>
-      </div>
+      </button>
 
-      <div class="category" data-category="Buildings">
+      <button class="category" data-category="Buildings">
         <span>🏠</span>
         <p>Buildings</p>
-      </div>
+      </button>
     </div>
   </section>
 
-  <section class="section">
-    <h3>Image Comparison</h3>
+  <section class="panel">
+    <h3>Before / After Comparison</h3>
 
     <div class="preview-grid">
       <div class="preview-card">
         <h4>Original Photo</h4>
-        <img id="original" alt="Original photo">
+        <img id="original" alt="Original image">
       </div>
 
       <div class="preview-card">
@@ -334,50 +313,55 @@ footer {
       </div>
     </div>
 
-    <p id="status">Upload a photo to get started.</p>
+    <div id="status">Upload a photo to begin.</div>
   </section>
 
-  <section class="section">
+  <section class="panel">
     <h3>Enhancement Settings</h3>
 
-    <div class="controls">
+    <div class="control">
+      <label>
+        Brightness
+        <span id="brightnessValue">100%</span>
+      </label>
+      <input type="range" id="brightness"
+        min="50" max="150" value="100">
+    </div>
 
-      <div class="control">
-        <label>
-          Brightness
-          <span id="brightnessValue">100%</span>
-        </label>
-        <input type="range" id="brightness"
-          min="50" max="150" value="100">
-      </div>
+    <div class="control">
+      <label>
+        Contrast
+        <span id="contrastValue">110%</span>
+      </label>
+      <input type="range" id="contrast"
+        min="50" max="180" value="110">
+    </div>
 
-      <div class="control">
-        <label>
-          Contrast
-          <span id="contrastValue">110%</span>
-        </label>
-        <input type="range" id="contrast"
-          min="50" max="180" value="110">
-      </div>
+    <div class="control">
+      <label>
+        Saturation
+        <span id="saturationValue">110%</span>
+      </label>
+      <input type="range" id="saturation"
+        min="0" max="200" value="110">
+    </div>
 
-      <div class="control">
-        <label>
-          Color Saturation
-          <span id="saturationValue">110%</span>
-        </label>
-        <input type="range" id="saturation"
-          min="0" max="200" value="110">
-      </div>
+    <div class="control">
+      <label>
+        Sharpness
+        <span id="sharpnessValue">0%</span>
+      </label>
+      <input type="range" id="sharpness"
+        min="0" max="100" value="0">
+    </div>
 
-      <div class="control">
-        <label>Output Resolution</label>
-        <select id="resolution">
-          <option value="1">Original Size</option>
-          <option value="2">2x Upscale</option>
-          <option value="4">4x Upscale</option>
-        </select>
-      </div>
-
+    <div class="control">
+      <label>Output Resolution</label>
+      <select id="resolution">
+        <option value="1">Original Size</option>
+        <option value="2">2x Upscale</option>
+        <option value="4">4x Upscale</option>
+      </select>
     </div>
 
     <div class="actions">
@@ -395,33 +379,51 @@ footer {
 </footer>
 
 <script>
-const fileInput = document.getElementById("fileInput");
-const original = document.getElementById("original");
-const canvas = document.getElementById("result");
-const ctx = canvas.getContext("2d");
+const $ = id => document.getElementById(id);
 
-const brightness = document.getElementById("brightness");
-const contrast = document.getElementById("contrast");
-const saturation = document.getElementById("saturation");
-const resolution = document.getElementById("resolution");
-const downloadBtn = document.getElementById("downloadBtn");
-const status = document.getElementById("status");
+const fileInput = $("fileInput");
+const original = $("original");
+const canvas = $("result");
+const ctx = canvas.getContext("2d", {
+  willReadFrequently: true
+});
 
-let image = new Image();
-let imageLoaded = false;
-let currentURL = null;
+const brightness = $("brightness");
+const contrast = $("contrast");
+const saturation = $("saturation");
+const sharpness = $("sharpness");
+const resolution = $("resolution");
 
-document.querySelectorAll(".category").forEach(item => {
-  item.addEventListener("click", () => {
+const downloadBtn = $("downloadBtn");
+const status = $("status");
+
+let photo = new Image();
+let loaded = false;
+let photoURL = null;
+let renderTimer = null;
+
+const controls = [
+  brightness,
+  contrast,
+  saturation,
+  sharpness,
+  resolution
+];
+
+// Category selection
+document.querySelectorAll(".category").forEach(btn => {
+  btn.addEventListener("click", () => {
     document.querySelectorAll(".category")
       .forEach(x => x.classList.remove("active"));
 
-    item.classList.add("active");
+    btn.classList.add("active");
+
     status.textContent =
-      "Selected category: " + item.dataset.category;
+      "Selected category: " + btn.dataset.category;
   });
 });
 
+// Upload image
 fileInput.addEventListener("change", event => {
   const file = event.target.files[0];
 
@@ -433,64 +435,116 @@ fileInput.addEventListener("change", event => {
   }
 
   if (file.size > 20 * 1024 * 1024) {
-    alert("Please choose an image smaller than 20 MB.");
+    alert("Image must be smaller than 20 MB.");
     return;
   }
 
-  if (currentURL) URL.revokeObjectURL(currentURL);
+  if (photoURL) {
+    URL.revokeObjectURL(photoURL);
+  }
 
-  currentURL = URL.createObjectURL(file);
+  loaded = false;
+  downloadBtn.disabled = true;
+  status.textContent = "Loading image...";
 
-  image.onload = () => {
-    imageLoaded = true;
-    original.src = currentURL;
+  photoURL = URL.createObjectURL(file);
 
-    downloadBtn.disabled = false;
-
+  photo.onload = () => {
+    loaded = true;
+    original.src = photoURL;
     updatePreview();
+    downloadBtn.disabled = false;
     status.textContent = "Photo uploaded successfully!";
   };
 
-  image.onerror = () => {
-    status.textContent = "Could not load this image.";
-    downloadBtn.disabled = true;
+  photo.onerror = () => {
+    status.textContent = "Unable to load this image.";
   };
 
-  image.src = currentURL;
+  photo.src = photoURL;
 });
 
-function updatePreview() {
-  if (!imageLoaded || !image.naturalWidth) return;
+// Update percentage labels
+function updateLabels() {
+  $("brightnessValue").textContent =
+    brightness.value + "%";
 
-  const scale = Number(resolution.value);
+  $("contrastValue").textContent =
+    contrast.value + "%";
 
-  canvas.width = image.naturalWidth * scale;
-  canvas.height = image.naturalHeight * scale;
+  $("saturationValue").textContent =
+    saturation.value + "%";
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = "high";
-
-  ctx.filter = `brightness(${brightness.value}%) contrast(${contrast.value}%) saturate(${saturation.value}%)`;
-
-  ctx.drawImage(
-    image,
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-  ctx.filter = "none";
+  $("sharpnessValue").textContent =
+    sharpness.value + "%";
 }
 
+// Sharpen image using a 3x3 convolution
+function sharpenImage(amount) {
+  if (amount <= 0) return;
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  const imgData = ctx.getImageData(
+    0, 0, width, height
+  );
+
+  const source = new Uint8ClampedArray(imgData.data);
+  const output = imgData.data;
+
+  const a = amount / 100 * 0.30;
+  const center = 1 + 4 * a;
+
+  for (let y = 1; y < height - 1; y++) {
+    for (let x = 1; x < width - 1; x++) {
+
+      const i = (y * width + x) * 4;
+
+      const top = i - width * 4;
+      const bottom = i + width * 4;
+      const left = i - 4;
+      const right = i + 4;
+
+      for (let c = 0; c < 3; c++) {
+        output[i+c] =
+          source[i+c] * center -
+          a * (
+            source[top+c] +
+            source[bottom+c] +
+            source[left+c] +
+            source[right+c]
+          );
+      }
+    }
+  }
+
+  ctx.putImageData(imgData, 0, 0);
+}
+
+// Render enhanced preview
+function updatePreview() {
+  if (!loaded || !photo.naturalWidth) return;
+
   const scale = Number(resolution.value);
 
-  canvas.width = image.naturalWidth * scale;
-  canvas.height = image.naturalHeight * scale;
+  let width = photo.naturalWidth * scale;
+  let height = photo.naturalHeight * scale;
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Protect mobile devices from oversized canvas memory use
+  const maxPixels = 12000000;
+
+  if (width * height > maxPixels) {
+    const factor = Math.sqrt(
+      maxPixels / (width * height)
+    );
+
+    width = Math.max(1, Math.floor(width * factor));
+    height = Math.max(1, Math.floor(height * factor));
+  }
+
+  canvas.width = width;
+  canvas.height = height;
 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
@@ -500,69 +554,80 @@ function updatePreview() {
     `contrast(${contrast.value}%) ` +
     `saturate(${saturation.value}%)`;
 
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(photo, 0, 0, width, height);
 
   ctx.filter = "none";
-}
-[brightness, contrast, saturation, resolution]
-.forEach(control => {
-  control.addEventListener("input", () => {
-    updateLabels();
-    updatePreview();
-  });
-});
 
-function updateLabels() {
-  document.getElementById("brightnessValue").textContent =
-    brightness.value + "%";
-
-  document.getElementById("contrastValue").textContent =
-    contrast.value + "%";
-
-  document.getElementById("saturationValue").textContent =
-    saturation.value + "%";
+  try {
+    sharpenImage(Number(sharpness.value));
+    status.textContent = "Preview updated successfully!";
+  } catch (error) {
+    status.textContent =
+      "Preview could not be processed. Try a smaller image.";
+  }
 }
 
-[brightness, contrast, saturation, resolution]
-.forEach(control => {
-  control.addEventListener("input", () => {
-    updateLabels();
-    updatePreview();
-  });
+// Debounce expensive preview rendering
+function schedulePreview() {
+  updateLabels();
+
+  clearTimeout(renderTimer);
+
+  if (!loaded) return;
+
+  renderTimer = setTimeout(updatePreview, 100);
+}
+
+controls.forEach(control => {
+  control.addEventListener("input", schedulePreview);
+  control.addEventListener("change", schedulePreview);
 });
 
-document.getElementById("resetBtn").addEventListener("click", () => {
+// Reset
+$("resetBtn").addEventListener("click", () => {
   brightness.value = 100;
   contrast.value = 110;
   saturation.value = 110;
+  sharpness.value = 0;
   resolution.value = 1;
 
   updateLabels();
   updatePreview();
 });
 
+// Download
 downloadBtn.addEventListener("click", () => {
-  if (!imageLoaded) return;
+  if (!loaded) return;
+
+  status.textContent = "Preparing your photo...";
 
   canvas.toBlob(blob => {
     if (!blob) {
-      alert("Image export failed. Please try again.");
+      status.textContent = "Download failed. Try again.";
       return;
     }
 
-    const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
 
     link.href = url;
     link.download = "PixelPro-AI-Enhanced.png";
-    link.click();
 
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = "Your photo is ready!";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+
+    status.textContent = "Your enhanced photo is ready!";
   }, "image/png");
 });
 
+// Initial setup
+canvas.width = 1;
+canvas.height = 1;
 updateLabels();
+
 </script>
 
 </body>
