@@ -159,6 +159,22 @@ download.href = preview.src;
 download.style.display = "inline-block";
 });
 </script>
+<button id="downloadBtn" style="display:none;">
+  Download Photo
+</button>
+
+<script>
+document.getElementById("downloadBtn").onclick = function() {
+  const img = document.querySelector("#preview");
+
+  if (img && img.src) {
+    const link = document.createElement("a");
+    link.href = img.src;
+    link.download = "PixelPro-AI-Enhanced.png";
+    link.click();
+  }
+};
+</script>
 
 </body>
 </html>
