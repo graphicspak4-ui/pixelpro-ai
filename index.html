@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelPro AI - Photo Enhancer</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #080d1b;
+  color: white;
+}
+
+header {
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #202b43;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: #a78bfa;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px 30px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.hero h1 span {
+  color: #a78bfa;
+}
+
+.hero p {
+  color: #aab4c8;
+  line-height: 1.7;
+}
+
+.upload {
+  max-width: 480px;
+  margin: 25px auto;
+  padding: 30px 20px;
+  background: #131d33;
+  border: 2px dashed #7860d8;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.upload h2 {
+  font-size: 21px;
+}
+
+.upload p {
+  color: #aab4c8;
+  font-size: 14px;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  background: #7954e8;
+  padding: 14px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#preview {
+  display: none;
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+
+#status {
+  color: #c4b5fd;
+  margin-top: 15px;
+}
+
+footer {
+  text-align: center;
+  color: #7e8ba5;
+  padding: 35px 15px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">✦ PixelPro AI</div>
+  <div>Photo Studio</div>
+</header>
+
+<section class="hero">
+  <h1>Make Your Photos<br>
+  <span>Look Amazing.</span></h1>
+
+  <p>
+    Enhance your photos with the power of AI.<br>
+    Give your memories a beautiful new look.
+  </p>
+</section>
+
+<section class="upload">
+  <h2>📸 Upload Your Photo</h2>
+  <p>Choose an image from your device</p>
+
+  <input type="file" id="photo" accept="image/*">
+
+  <label for="photo">Choose Photo</label>
+
+  <img id="preview" alt="Your uploaded photo">
+
+  <p id="status">Your photo will appear here.</p>
+</section>
+
+<footer>
+  © 2026 PixelPro AI. All rights reserved.
+</footer>
+
+<script>
+const photo = document.getElementById("photo");
+const preview = document.getElementById("preview");
+const status = document.getElementById("status");
+
+photo.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+    status.textContent = "Photo uploaded successfully!";
+  }
+});
+</script>
+
+</body>
+</html>
