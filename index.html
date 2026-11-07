@@ -460,7 +460,30 @@ fileInput.addEventListener("change", event => {
 });
 
 function updatePreview() {
-  if (!imageLoaded) return;
+  if (!imageLoaded || !image.naturalWidth) return;
+
+  const scale = Number(resolution.value);
+
+  canvas.width = image.naturalWidth * scale;
+  canvas.height = image.naturalHeight * scale;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+
+  ctx.filter = `brightness(${brightness.value}%) contrast(${contrast.value}%) saturate(${saturation.value}%)`;
+
+  ctx.drawImage(
+    image,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  ctx.filter = "none";
+}
 
   const scale = Number(resolution.value);
 
