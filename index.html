@@ -154,6 +154,9 @@ photo.addEventListener("change", function() {
     preview.style.display = "block";
     status.textContent = "Photo uploaded successfully!";
   }
+  const download = document.getElementById("download");
+download.href = preview.src;
+download.style.display = "inline-block";
 });
 </script>
 
