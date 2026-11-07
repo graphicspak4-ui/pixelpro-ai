@@ -4,105 +4,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PixelPro AI - Photo Enhancer</title>
+<title>PixelPro AI - Image Enhancer</title>
 
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
+  background: #080d18;
+  color: #fff;
   font-family: Arial, sans-serif;
-  background: #080d1b;
-  color: white;
+  min-height: 100vh;
 }
 
 header {
-  padding: 22px;
+  padding: 22px 7%;
+  border-bottom: 1px solid #202a3c;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #202b43;
 }
 
 .logo {
-  font-size: 23px;
+  font-size: 24px;
   font-weight: bold;
-  color: #a78bfa;
+  color: #56a8ff;
 }
 
 .hero {
   text-align: center;
-  padding: 65px 20px 30px;
+  padding: 55px 15px 30px;
 }
 
 .hero h1 {
-  font-size: 38px;
+  font-size: clamp(30px, 6vw, 48px);
   margin-bottom: 15px;
 }
 
 .hero h1 span {
-  color: #a78bfa;
+  color: #58aaff;
 }
 
 .hero p {
-  color: #aab4c8;
+  color: #a8b5ca;
   line-height: 1.7;
 }
 
-.upload {
-  max-width: 480px;
-  margin: 25px auto;
-  padding: 30px 20px;
-  background: #131d33;
-  border: 2px dashed #7860d8;
+.container {
+  width: 90%;
+  max-width: 850px;
+  margin: auto;
+}
+
+.upload-box {
+  border: 2px dashed #397fc4;
+  background: #111c30;
   border-radius: 18px;
+  padding: 38px 15px;
   text-align: center;
+  cursor: pointer;
+  margin: 20px 0;
 }
 
-.upload h2 {
-  font-size: 21px;
+.upload-box:hover {
+  background: #172943;
 }
 
-.upload p {
-  color: #aab4c8;
+.upload-box .upload-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.upload-box p {
+  color: #a8b5ca;
+  margin-top: 10px;
+}
+
+button, select {
+  border: none;
+  border-radius: 9px;
+  padding: 13px 20px;
+  font-size: 15px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  background: #2588ef;
+  color: white;
+}
+
+button:hover {
+  background: #126cc7;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.section {
+  background: #111c30;
+  border: 1px solid #24334b;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.section h3 {
+  margin-bottom: 16px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.category {
+  background: #1b2a40;
+  border: 1px solid #344761;
+  border-radius: 10px;
+  padding: 15px 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.category.active {
+  border: 2px solid #48a4ff;
+  background: #19385b;
+}
+
+.category span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.category p {
+  font-size: 13px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.preview-card {
+  background: #080d18;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 0;
+}
+
+.preview-card h4 {
+  margin-bottom: 10px;
+  color: #9fcaff;
+}
+
+.preview-card img,
+.preview-card canvas {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #050912;
+  border-radius: 7px;
+}
+
+.controls {
+  margin-top: 18px;
+}
+
+.control {
+  margin: 20px 0;
+}
+
+.control label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
   font-size: 14px;
 }
 
-input {
-  display: none;
-}
-
-label {
-  display: inline-block;
-  background: #7954e8;
-  padding: 14px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-#preview {
-  display: none;
+input[type="range"] {
   width: 100%;
-  max-height: 350px;
-  object-fit: contain;
-  margin-top: 20px;
-  border-radius: 12px;
+  accent-color: #3197ff;
 }
 
-#status {
-  color: #c4b5fd;
-  margin-top: 15px;
+select {
+  width: 100%;
+  background: #1b2a40;
+  color: white;
+  border: 1px solid #344761;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.actions button {
+  flex: 1;
+}
+
+.download {
+  background: #16a36b;
+}
+
+.download:hover {
+  background: #118453;
 }
 
 footer {
   text-align: center;
-  color: #7e8ba5;
-  padding: 35px 15px;
+  padding: 35px 10px;
+  color: #8291a8;
   font-size: 13px;
+}
+
+#status {
+  text-align: center;
+  color: #69b5ff;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+@media(max-width:550px) {
+  .preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-card img,
+  .preview-card canvas {
+    height: 250px;
+  }
+
+  .categories {
+    gap: 6px;
+  }
+
+  .category {
+    padding: 12px 3px;
+  }
+
+  .category p {
+    font-size: 11px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
 }
 </style>
 </head>
@@ -111,69 +268,271 @@ footer {
 
 <header>
   <div class="logo">✦ PixelPro AI</div>
-  <div>Photo Studio</div>
+  <span>Image Studio</span>
 </header>
 
 <section class="hero">
-  <h1>Make Your Photos<br>
-  <span>Look Amazing.</span></h1>
-
+  <h1>Bring Your Photos <span>To Life.</span></h1>
   <p>
-    Enhance your photos with the power of AI.<br>
-    Give your memories a beautiful new look.
+    Enhance image clarity, improve details and create
+    beautiful high-quality photos.
   </p>
 </section>
 
-<section class="upload">
-  <h2>📸 Upload Your Photo</h2>
-  <p>Choose an image from your device</p>
+<main class="container">
 
-  <input type="file" id="photo" accept="image/*">
+  <label class="upload-box" for="fileInput">
+    <div class="upload-icon">☁️</div>
+    <h3>Upload Your Photo</h3>
+    <p>Choose JPG, PNG or WEBP image</p>
+    <br>
+    <span style="color:#58aaff;font-weight:bold">
+      Browse Image
+    </span>
+  </label>
 
-  <label for="photo">Choose Photo</label>
+  <input
+    type="file"
+    id="fileInput"
+    accept="image/jpeg,image/png,image/webp"
+    hidden
+  >
 
-  <img id="preview" alt="Your uploaded photo">
+  <section class="section">
+    <h3>Choose Image Category</h3>
 
-  <p id="status">Your photo will appear here.</p>
-</section>
+    <div class="categories">
+      <div class="category active" data-category="Nature">
+        <span>🌳</span>
+        <p>Nature</p>
+      </div>
+
+      <div class="category" data-category="Portrait">
+        <span>👤</span>
+        <p>Portrait</p>
+      </div>
+
+      <div class="category" data-category="Buildings">
+        <span>🏠</span>
+        <p>Buildings</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>Image Comparison</h3>
+
+    <div class="preview-grid">
+      <div class="preview-card">
+        <h4>Original Photo</h4>
+        <img id="original" alt="Original photo">
+      </div>
+
+      <div class="preview-card">
+        <h4>Enhanced Preview</h4>
+        <canvas id="result"></canvas>
+      </div>
+    </div>
+
+    <p id="status">Upload a photo to get started.</p>
+  </section>
+
+  <section class="section">
+    <h3>Enhancement Settings</h3>
+
+    <div class="controls">
+
+      <div class="control">
+        <label>
+          Brightness
+          <span id="brightnessValue">100%</span>
+        </label>
+        <input type="range" id="brightness"
+          min="50" max="150" value="100">
+      </div>
+
+      <div class="control">
+        <label>
+          Contrast
+          <span id="contrastValue">110%</span>
+        </label>
+        <input type="range" id="contrast"
+          min="50" max="180" value="110">
+      </div>
+
+      <div class="control">
+        <label>
+          Color Saturation
+          <span id="saturationValue">110%</span>
+        </label>
+        <input type="range" id="saturation"
+          min="0" max="200" value="110">
+      </div>
+
+      <div class="control">
+        <label>Output Resolution</label>
+        <select id="resolution">
+          <option value="1">Original Size</option>
+          <option value="2">2x Upscale</option>
+          <option value="4">4x Upscale</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button id="resetBtn">Reset Settings</button>
+      <button id="downloadBtn" class="download" disabled>
+        ⬇ Download Photo
+      </button>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  © 2026 PixelPro AI. All rights reserved.
+  © 2026 PixelPro AI | Image Enhancement Studio
 </footer>
 
 <script>
-const photo = document.getElementById("photo");
-const preview = document.getElementById("preview");
+const fileInput = document.getElementById("fileInput");
+const original = document.getElementById("original");
+const canvas = document.getElementById("result");
+const ctx = canvas.getContext("2d");
+
+const brightness = document.getElementById("brightness");
+const contrast = document.getElementById("contrast");
+const saturation = document.getElementById("saturation");
+const resolution = document.getElementById("resolution");
+const downloadBtn = document.getElementById("downloadBtn");
 const status = document.getElementById("status");
 
-photo.addEventListener("change", function() {
-  const file = this.files[0];
+let image = new Image();
+let imageLoaded = false;
+let currentURL = null;
 
-  if (file) {
-    preview.src = URL.createObjectURL(file);
-    preview.style.display = "block";
-    status.textContent = "Photo uploaded successfully!";
-  }
-  const download = document.getElementById("download");
-download.href = preview.src;
-download.style.display = "inline-block";
+document.querySelectorAll(".category").forEach(item => {
+  item.addEventListener("click", () => {
+    document.querySelectorAll(".category")
+      .forEach(x => x.classList.remove("active"));
+
+    item.classList.add("active");
+    status.textContent =
+      "Selected category: " + item.dataset.category;
+  });
 });
-</script>
-<button id="downloadBtn" style="display:none;">
-  Download Photo
-</button>
 
-<script>
-document.getElementById("downloadBtn").onclick = function() {
-  const img = document.querySelector("#preview");
+fileInput.addEventListener("change", event => {
+  const file = event.target.files[0];
 
-  if (img && img.src) {
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select a valid image.");
+    return;
+  }
+
+  if (file.size > 20 * 1024 * 1024) {
+    alert("Please choose an image smaller than 20 MB.");
+    return;
+  }
+
+  if (currentURL) URL.revokeObjectURL(currentURL);
+
+  currentURL = URL.createObjectURL(file);
+
+  image.onload = () => {
+    imageLoaded = true;
+    original.src = currentURL;
+
+    downloadBtn.disabled = false;
+
+    updatePreview();
+    status.textContent = "Photo uploaded successfully!";
+  };
+
+  image.onerror = () => {
+    status.textContent = "Could not load this image.";
+    downloadBtn.disabled = true;
+  };
+
+  image.src = currentURL;
+});
+
+function updatePreview() {
+  if (!imageLoaded) return;
+
+  const scale = Number(resolution.value);
+
+  canvas.width = image.naturalWidth * scale;
+  canvas.height = image.naturalHeight * scale;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+
+  ctx.filter =
+    `brightness(${brightness.value}%) ` +
+    `contrast(${contrast.value}%) ` +
+    `saturate(${saturation.value}%)`;
+
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+  ctx.filter = "none";
+}
+
+function updateLabels() {
+  document.getElementById("brightnessValue").textContent =
+    brightness.value + "%";
+
+  document.getElementById("contrastValue").textContent =
+    contrast.value + "%";
+
+  document.getElementById("saturationValue").textContent =
+    saturation.value + "%";
+}
+
+[brightness, contrast, saturation, resolution]
+.forEach(control => {
+  control.addEventListener("input", () => {
+    updateLabels();
+    updatePreview();
+  });
+});
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  brightness.value = 100;
+  contrast.value = 110;
+  saturation.value = 110;
+  resolution.value = 1;
+
+  updateLabels();
+  updatePreview();
+});
+
+downloadBtn.addEventListener("click", () => {
+  if (!imageLoaded) return;
+
+  canvas.toBlob(blob => {
+    if (!blob) {
+      alert("Image export failed. Please try again.");
+      return;
+    }
+
     const link = document.createElement("a");
-    link.href = img.src;
+    const url = URL.createObjectURL(blob);
+
+    link.href = url;
     link.download = "PixelPro-AI-Enhanced.png";
     link.click();
-  }
-};
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    status.textContent = "Your photo is ready!";
+  }, "image/png");
+});
+
+updateLabels();
 </script>
 
 </body>
