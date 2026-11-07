@@ -504,6 +504,13 @@ function updatePreview() {
 
   ctx.filter = "none";
 }
+[brightness, contrast, saturation, resolution]
+.forEach(control => {
+  control.addEventListener("input", () => {
+    updateLabels();
+    updatePreview();
+  });
+});
 
 function updateLabels() {
   document.getElementById("brightnessValue").textContent =
