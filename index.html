@@ -4,629 +4,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PixelPro AI - Image Enhancer</title>
+<meta name="theme-color" content="#101426">
+<title>PhotoBoost AI - Photo Enhancer</title>
 
 <style>
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  background: #080d18;
-  color: #fff;
+  margin: 0;
   font-family: Arial, sans-serif;
+  background: #101426;
+  color: white;
 }
 
 header {
   padding: 22px;
-  background: #101a2c;
   text-align: center;
-  border-bottom: 1px solid #263852;
-}
-
-.logo {
-  color: #55aaff;
-  font-size: 27px;
+  font-size: 25px;
   font-weight: bold;
+  color: #a78bfa;
 }
 
-.hero {
-  text-align: center;
-  padding: 42px 15px 25px;
-}
-
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 12px;
-}
-
-.hero h1 span {
-  color: #55aaff;
-}
-
-.hero p {
-  color: #aab7ca;
-  line-height: 1.6;
-}
-
-.container {
-  width: 92%;
-  max-width: 850px;
+main {
+  max-width: 480px;
   margin: auto;
-}
-
-.panel {
-  background: #111c30;
-  border: 1px solid #263852;
-  border-radius: 15px;
   padding: 20px;
-  margin-bottom: 20px;
 }
 
-.panel h3 {
-  margin-bottom: 16px;
+h1 {
+  text-align: center;
+  font-size: 32px;
+}
+
+p {
+  color: #b8bfd2;
+  text-align: center;
+  line-height: 1.6;
 }
 
 .upload {
-  display: block;
+  margin-top: 30px;
+  padding: 30px 15px;
   text-align: center;
-  padding: 35px 15px;
-  background: #15243a;
-  border: 2px dashed #398ee0;
-  border-radius: 12px;
-  cursor: pointer;
+  border: 2px dashed #8b5cf6;
+  border-radius: 18px;
+  background: #1b2138;
 }
 
-.upload-icon {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.upload p {
-  color: #aab7ca;
-  font-size: 13px;
-  margin: 10px;
-}
-
-.browse {
+.upload label {
   display: inline-block;
-  background: #2588ef;
-  padding: 12px 22px;
-  border-radius: 8px;
+  padding: 14px 24px;
+  background: #7c3aed;
+  border-radius: 10px;
+  cursor: pointer;
   font-weight: bold;
 }
 
-#fileInput {
+input {
   display: none;
 }
 
-.categories {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 10px;
-}
-
-.category {
-  background: #1b2b42;
-  color: white;
-  border: 1px solid #344862;
-  border-radius: 10px;
-  padding: 15px 5px;
-  cursor: pointer;
-}
-
-.category.active {
-  border: 2px solid #55aaff;
-  background: #193c61;
-}
-
-.category span {
-  display: block;
-  font-size: 25px;
-  margin-bottom: 8px;
-}
-
-.category p {
-  font-size: 13px;
-}
-
-.preview-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.preview-card {
-  background: #080d18;
-  padding: 10px;
-  border-radius: 10px;
-  min-width: 0;
-}
-
-.preview-card h4 {
-  color: #65b3ff;
-  margin-bottom: 12px;
-}
-
-.preview-card img,
-.preview-card canvas {
-  display: block;
+#preview {
+  display: none;
   width: 100%;
-  height: 220px;
-  object-fit: contain;
-  background: #050912;
-  border-radius: 8px;
-}
-
-.control {
-  margin: 24px 0;
-}
-
-.control label {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-input[type=range] {
-  width: 100%;
-  accent-color: #45a1ff;
-}
-
-select {
-  width: 100%;
-  padding: 13px;
-  background: #1b2b42;
-  color: white;
-  border: 1px solid #344862;
-  border-radius: 8px;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
   margin-top: 20px;
+  border-radius: 12px;
 }
 
 button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
   border: none;
-  padding: 14px;
-  border-radius: 9px;
-  background: #2588ef;
+  border-radius: 12px;
+  background: linear-gradient(90deg,#7c3aed,#a855f7);
   color: white;
+  font-size: 17px;
   font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
 }
 
-button:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-}
-
-.actions button {
-  flex: 1;
-}
-
-.download {
-  background: #13a36a;
-}
-
-#status {
-  color: #73baff;
+.ad {
+  margin-top: 30px;
+  padding: 25px;
+  background: #1b2138;
+  border-radius: 10px;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-top: 16px;
+  color: #929bb2;
 }
 
 footer {
+  padding: 25px;
   text-align: center;
-  padding: 30px 10px;
-  color: #8492a8;
-  font-size: 13px;
-}
-
-@media(max-width:550px) {
-  .preview-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .preview-card img,
-  .preview-card canvas {
-    height: 250px;
-  }
-
-  .actions {
-    flex-direction: column;
-  }
-
-  .hero h1 {
-    font-size: 29px;
-  }
+  color: #929bb2;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">✦ PixelPro AI</div>
-  <p>Professional Image Studio</p>
-</header>
+<header>✨ PhotoBoost AI</header>
 
-<section class="hero">
-  <h1>Make Photos <span>Beautiful.</span></h1>
-  <p>Improve clarity, colors and details with PixelPro AI.</p>
-</section>
+<main>
 
-<main class="container">
+<h1>Enhance Your Photos</h1>
 
-  <section class="panel">
-    <label class="upload" for="fileInput">
-      <div class="upload-icon">☁️</div>
-      <h3>Upload Your Photo</h3>
-      <p>JPG, PNG and WEBP supported (Max 20 MB)</p>
-      <span class="browse">Browse Images</span>
-    </label>
+<p>Transform your ordinary photos into beautiful HD images with AI.</p>
 
-    <input type="file" id="fileInput"
-      accept="image/jpeg,image/png,image/webp">
-  </section>
+<div class="upload">
 
-  <section class="panel">
-    <h3>Choose Image Category</h3>
+<h3>Upload Your Photo</h3>
 
-    <div class="categories">
-      <button class="category active" data-category="Nature">
-        <span>🌳</span>
-        <p>Nature</p>
-      </button>
+<p>Select a photo from your iPhone</p>
 
-      <button class="category" data-category="Portrait">
-        <span>👤</span>
-        <p>Portrait</p>
-      </button>
+<label for="photo">📸 Choose Photo</label>
 
-      <button class="category" data-category="Buildings">
-        <span>🏠</span>
-        <p>Buildings</p>
-      </button>
-    </div>
-  </section>
+<input type="file" id="photo"
+accept="image/jpeg,image/png,image/webp">
 
-  <section class="panel">
-    <h3>Before / After Comparison</h3>
+<img id="preview">
 
-    <div class="preview-grid">
-      <div class="preview-card">
-        <h4>Original Photo</h4>
-        <img id="original" alt="Original image">
-      </div>
+</div>
 
-      <div class="preview-card">
-        <h4>Enhanced Preview</h4>
-        <canvas id="result"></canvas>
-      </div>
-    </div>
+<button onclick="enhancePhoto()">
+✨ Enhance Photo
+</button>
 
-    <div id="status">Upload a photo to begin.</div>
-  </section>
+<div id="message"></div>
 
-  <section class="panel">
-    <h3>Enhancement Settings</h3>
-
-    <div class="control">
-      <label>
-        Brightness
-        <span id="brightnessValue">100%</span>
-      </label>
-      <input type="range" id="brightness"
-        min="50" max="150" value="100">
-    </div>
-
-    <div class="control">
-      <label>
-        Contrast
-        <span id="contrastValue">110%</span>
-      </label>
-      <input type="range" id="contrast"
-        min="50" max="180" value="110">
-    </div>
-
-    <div class="control">
-      <label>
-        Saturation
-        <span id="saturationValue">110%</span>
-      </label>
-      <input type="range" id="saturation"
-        min="0" max="200" value="110">
-    </div>
-
-    <div class="control">
-      <label>
-        Sharpness
-        <span id="sharpnessValue">0%</span>
-      </label>
-      <input type="range" id="sharpness"
-        min="0" max="100" value="0">
-    </div>
-
-    <div class="control">
-      <label>Output Resolution</label>
-      <select id="resolution">
-        <option value="1">Original Size</option>
-        <option value="2">2x Upscale</option>
-        <option value="4">4x Upscale</option>
-      </select>
-    </div>
-
-    <div class="actions">
-      <button id="resetBtn">Reset Settings</button>
-      <button id="downloadBtn" class="download" disabled>
-        ⬇ Download Photo
-      </button>
-    </div>
-  </section>
+<div class="ad">
+Advertisement Space
+</div>
 
 </main>
 
 <footer>
-  © 2026 PixelPro AI | Image Enhancement Studio
+© 2026 PhotoBoost AI
 </footer>
 
 <script>
-const $ = id => document.getElementById(id);
 
-const fileInput = $("fileInput");
-const original = $("original");
-const canvas = $("result");
-const ctx = canvas.getContext("2d", {
-  willReadFrequently: true
-});
+const photo = document.getElementById("photo");
+const preview = document.getElementById("preview");
 
-const brightness = $("brightness");
-const contrast = $("contrast");
-const saturation = $("saturation");
-const sharpness = $("sharpness");
-const resolution = $("resolution");
+photo.addEventListener("change", function() {
 
-const downloadBtn = $("downloadBtn");
-const status = $("status");
+const file = this.files[0];
 
-let photo = new Image();
-let loaded = false;
-let photoURL = null;
-let renderTimer = null;
+if (!file) return;
 
-const controls = [
-  brightness,
-  contrast,
-  saturation,
-  sharpness,
-  resolution
-];
-
-// Category selection
-document.querySelectorAll(".category").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".category")
-      .forEach(x => x.classList.remove("active"));
-
-    btn.classList.add("active");
-
-    status.textContent =
-      "Selected category: " + btn.dataset.category;
-  });
-});
-
-// Upload image
-fileInput.addEventListener("change", event => {
-  const file = event.target.files[0];
-
-  if (!file) return;
-
-  if (!file.type.startsWith("image/")) {
-    alert("Please select a valid image.");
-    return;
-  }
-
-  if (file.size > 20 * 1024 * 1024) {
-    alert("Image must be smaller than 20 MB.");
-    return;
-  }
-
-  if (photoURL) {
-    URL.revokeObjectURL(photoURL);
-  }
-
-  loaded = false;
-  downloadBtn.disabled = true;
-  status.textContent = "Loading image...";
-
-  photoURL = URL.createObjectURL(file);
-
-  photo.onload = () => {
-    loaded = true;
-    original.src = photoURL;
-    updatePreview();
-    downloadBtn.disabled = false;
-    status.textContent = "Photo uploaded successfully!";
-  };
-
-  photo.onerror = () => {
-    status.textContent = "Unable to load this image.";
-  };
-
-  photo.src = photoURL;
-});
-
-// Update percentage labels
-function updateLabels() {
-  $("brightnessValue").textContent =
-    brightness.value + "%";
-
-  $("contrastValue").textContent =
-    contrast.value + "%";
-
-  $("saturationValue").textContent =
-    saturation.value + "%";
-
-  $("sharpnessValue").textContent =
-    sharpness.value + "%";
+if (file.size > 10 * 1024 * 1024) {
+alert("Photo must be under 10 MB");
+this.value = "";
+return;
 }
 
-// Sharpen image using a 3x3 convolution
-function sharpenImage(amount) {
-  if (amount <= 0) return;
+preview.src = URL.createObjectURL(file);
+preview.style.display = "block";
 
-  const width = canvas.width;
-  const height = canvas.height;
-
-  const imgData = ctx.getImageData(
-    0, 0, width, height
-  );
-
-  const source = new Uint8ClampedArray(imgData.data);
-  const output = imgData.data;
-
-  const a = amount / 100 * 0.30;
-  const center = 1 + 4 * a;
-
-  for (let y = 1; y < height - 1; y++) {
-    for (let x = 1; x < width - 1; x++) {
-
-      const i = (y * width + x) * 4;
-
-      const top = i - width * 4;
-      const bottom = i + width * 4;
-      const left = i - 4;
-      const right = i + 4;
-
-      for (let c = 0; c < 3; c++) {
-        output[i+c] =
-          source[i+c] * center -
-          a * (
-            source[top+c] +
-            source[bottom+c] +
-            source[left+c] +
-            source[right+c]
-          );
-      }
-    }
-  }
-
-  ctx.putImageData(imgData, 0, 0);
-}
-
-// Render enhanced preview
-function updatePreview() {
-  if (!loaded || !photo.naturalWidth) return;
-
-  const scale = Number(resolution.value);
-
-  let width = photo.naturalWidth * scale;
-  let height = photo.naturalHeight * scale;
-
-  // Protect mobile devices from oversized canvas memory use
-  const maxPixels = 12000000;
-
-  if (width * height > maxPixels) {
-    const factor = Math.sqrt(
-      maxPixels / (width * height)
-    );
-
-    width = Math.max(1, Math.floor(width * factor));
-    height = Math.max(1, Math.floor(height * factor));
-  }
-
-  canvas.width = width;
-  canvas.height = height;
-
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = "high";
-
-  ctx.filter =
-    `brightness(${brightness.value}%) ` +
-    `contrast(${contrast.value}%) ` +
-    `saturate(${saturation.value}%)`;
-
-  ctx.drawImage(photo, 0, 0, width, height);
-
-  ctx.filter = "none";
-
-  try {
-    sharpenImage(Number(sharpness.value));
-    status.textContent = "Preview updated successfully!";
-  } catch (error) {
-    status.textContent =
-      "Preview could not be processed. Try a smaller image.";
-  }
-}
-
-// Debounce expensive preview rendering
-function schedulePreview() {
-  updateLabels();
-
-  clearTimeout(renderTimer);
-
-  if (!loaded) return;
-
-  renderTimer = setTimeout(updatePreview, 100);
-}
-
-controls.forEach(control => {
-  control.addEventListener("input", schedulePreview);
-  control.addEventListener("change", schedulePreview);
 });
 
-// Reset
-$("resetBtn").addEventListener("click", () => {
-  brightness.value = 100;
-  contrast.value = 110;
-  saturation.value = 110;
-  sharpness.value = 0;
-  resolution.value = 1;
+function enhancePhoto() {
 
-  updateLabels();
-  updatePreview();
-});
+if (!photo.files.length) {
+alert("Please upload a photo first!");
+return;
+}
 
-// Download
-downloadBtn.addEventListener("click", () => {
-  if (!loaded) return;
+document.getElementById("message").innerHTML =
+"<p>AI engine coming soon!</p>";
 
-  status.textContent = "Preparing your photo...";
-
-  canvas.toBlob(blob => {
-    if (!blob) {
-      status.textContent = "Download failed. Try again.";
-      return;
-    }
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = "PixelPro-AI-Enhanced.png";
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(() => URL.revokeObjectURL(url), 2000);
-
-    status.textContent = "Your enhanced photo is ready!";
-  }, "image/png");
-});
-
-// Initial setup
-canvas.width = 1;
-canvas.height = 1;
-updateLabels();
+}
 
 </script>
 
